@@ -3,56 +3,30 @@ import { motion } from "framer-motion";
 import { Terminal } from "lucide-react";
 import TypewriterQuote from "@/components/TypewriterQuote";
 
-const GH = "https://github.com/siam-hossain9";
-
-const nodes: Record<string, NodeData> = {
+const nodes = {
   embedded: {
     title: "Embedded Systems & IoT",
     color: "#00C2FF",
-    desc: "I design and build real hardware projects where software meets the physical world. Using Arduino and C++, I have developed a multiplayer Reaction Time Game with OLED display feedback and a Smart Home Automation system with rain detection, servo motor control, and automated responses. I understand how to write firmware, work with sensors, and make hardware behave intelligently. Building systems that operate reliably in the real world is something I find deeply rewarding.",
-    links: [
-      { label: "Smart Home IoT", href: `${GH}/Smart_Home_IOT_Project` },
-      { label: "Reaction Time Game", href: `${GH}/Reaction-Time-Game_IOT_Project` },
-    ],
+    desc: "I design and build real hardware projects where software meets the physical world. Using Arduino and C++, I have developed a multiplayer Reaction Time Game with OLED display feedback and a Smart Home Automation system with rain detection, servo motor control, and automated responses. I understand how to write firmware, work with sensors, and make hardware behave intelligently. Building systems that operate reliably in the real world is something I find deeply rewarding."
   },
   ml: {
     title: "Machine Learning & Artificial Intelligence",
     color: "#FF8A00",
-    desc: "I build systems that learn from data and make intelligent decisions. My work includes galaxy-morphology classification with open-set rare-galaxy detection, a Weather Prediction model trained on a decade of climate data, a CNN-based image classifier, and a few-shot fine-grained classification project leveraging DINOv2 and CLIP. I work confidently in Python across the full ML pipeline from data preparation to model evaluation using Jupyter and Google Colab. I also actively use AI tools in my daily workflow to work faster and deliver smarter results.",
-    links: [
-      { label: "Galaxy Morphology", href: `${GH}/galaxy-morphology-classification` },
-      { label: "Few-Shot Baselines", href: `${GH}/few-shot-fine-grained-baselines` },
-      { label: "Intel CNN", href: `${GH}/Intel-Image-Classification-CNN` },
-    ],
+    desc: "I build systems that learn from data and make intelligent decisions. My work includes a Weather Prediction model trained on ten years of climate data, a CNN-based image classifier using TensorFlow, and a few-shot fine-grained classification project leveraging DINOv2 and CLIP. I work confidently in Python across the full ML pipeline from data preparation to model evaluation using Jupyter and Google Colab. I also actively use AI tools in my daily workflow to work faster and deliver smarter results."
   },
   fullstack: {
     title: "Full-Stack Web Development",
     color: "#50E3C2",
-    desc: "I build web experiences that are both technically solid and visually compelling. My projects include an immersive animated website with React, Vite, Three.js, and custom GLSL shaders, an AI chatbot with a 3D-backed conversational UI, and Financia — a complete financial management system with a PHP and MySQL backend. I work across the full stack with HTML, CSS, JavaScript, TypeScript, PHP, React, Next.js, and Three.js, always balancing clean code with strong user experience.",
-    links: [
-      { label: "Animated Website", href: `${GH}/animated-website` },
-      { label: "AI Chatbot", href: `${GH}/siam-ai-chatbot` },
-      { label: "Financia", href: `${GH}/Financia` },
-    ],
+    desc: "I build web experiences that are both technically solid and visually compelling. My projects include an immersive animated website with React, Vite, Three.js, and custom GLSL shaders, a Netflix-inspired streaming platform integrating multiple live APIs, and Financia — a complete financial management system with a PHP and MySQL backend. I work across the full stack with HTML, CSS, JavaScript, TypeScript, PHP, React, Next.js, and Three.js, always balancing clean code with strong user experience."
   },
   automation: {
     title: "Software, Automation & Beyond",
     color: "#FF5E5E",
-    desc: "My software work spans a 3D OpenGL village scene renderer, a multiplayer Snake Game, a console-based Bank Management System, and a browser-based Virtual Pet built in Next.js and TypeScript. Beyond coding, I build automated workflows using N8N to connect apps, APIs, and services — reducing manual effort and running processes intelligently in the background. I program across C++, Java, C#, Python, and JavaScript, and I approach every problem — whether low-level or high-level — with the same standard of precision and care.",
-    links: [
-      { label: "Virtual Pet", href: `${GH}/virtual-pet` },
-      { label: "N8N Automation", href: `${GH}/N8N-Automation-social-media` },
-      { label: "OpenGL Village", href: `${GH}/village-image-glut-project` },
-    ],
-  },
+    desc: "My software work spans a 3D OpenGL village scene renderer, a multiplayer Snake Game, a console-based Bank Management System, and a browser-based Virtual Pet built in Next.js and TypeScript. Beyond coding, I build automated workflows using N8N to connect apps, APIs, and services — reducing manual effort and running processes intelligently in the background. I program across C++, Java, C#, Python, and JavaScript, and I approach every problem — whether low-level or high-level — with the same standard of precision and care."
+  }
 };
 
-type NodeData = {
-  title: string;
-  color: string;
-  desc: string;
-  links?: { label: string; href: string }[];
-};
+type NodeData = { title: string; color: string; desc: string };
 
 const NodeCard = ({ data, delay = 0 }: { data: NodeData; delay?: number }) => (
   <motion.div
@@ -63,32 +37,16 @@ const NodeCard = ({ data, delay = 0 }: { data: NodeData; delay?: number }) => (
     className="glass w-full relative p-6 md:p-8 flex flex-col h-full hover:border-white/20 transition-all duration-300"
   >
     {/* Colored top accent line */}
-    <div
+    <div 
       className="absolute top-0 left-0 w-full h-[3px] rounded-t-2xl opacity-70"
       style={{ background: `linear-gradient(90deg, transparent, ${data.color}, transparent)` }}
     />
     <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight" style={{ color: data.color }}>
       {data.title}
     </h3>
-    <p className="text-xs md:text-sm text-white/70 leading-[1.8] flex-grow">
+    <p className="text-xs md:text-sm text-white/60 leading-[1.8] flex-grow">
       {data.desc}
     </p>
-    {data.links && (
-      <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-white/5">
-        {data.links.map((l) => (
-          <a
-            key={l.href}
-            href={l.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="skill-tag"
-            style={{ cursor: "pointer" }}
-          >
-            {l.label} ↗
-          </a>
-        ))}
-      </div>
-    )}
   </motion.div>
 );
 
@@ -105,7 +63,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="mb-12 flex justify-center w-full items-center gap-3"
         >
-          <Terminal size={32} style={{ color: "#00C2FF" }} aria-hidden="true" />
+          <Terminal size={32} style={{ color: "#00C2FF" }} />
           <h2 className="text-4xl md:text-5xl font-extrabold text-glow-animated tracking-tight m-0 border-none pb-0">About.me</h2>
         </motion.div>
 

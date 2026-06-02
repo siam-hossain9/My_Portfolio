@@ -19,54 +19,54 @@ const socials = [
 
 export default function Home() {
   return (
-    <>
+    <main className="relative min-h-screen">
       {/* Infinoz ambient glow layer */}
-      <div className="page-glow" aria-hidden="true" />
+      <div className="page-glow" />
       <Starfield />
       <Navbar />
 
-      <main className="relative min-h-screen">
-        <Hero />
-        <Marquee />
-        <About />
-        <Skills />
-        <Projects />
-        <Research />
-        <Contact />
-      </main>
+      <Hero />
+      <Marquee />
+      <About />
+      <Skills />
+      <Projects />
+      <Research />
+      <Contact />
 
       <footer
-        className="relative py-10 px-6"
+        className="py-10 text-center text-xs"
         style={{
           zIndex: 2,
-          color: "rgba(255,255,255,0.7)",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
+          position: "relative",
+          color: "rgba(255,255,255,0.35)",
+          borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
-        <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
-          <p className="text-xs sm:text-sm order-2 sm:order-1 text-center sm:text-left" style={{ color: "rgba(255,255,255,0.55)" }}>
-            &copy; {new Date().getFullYear()} Siam Hossain Nayon. Crafted with precision.
-          </p>
-          <nav aria-label="Social links" className="order-1 sm:order-2 flex items-center gap-3">
-            {socials.map((s) => {
-              const Icon = s.icon;
-              const external = s.href.startsWith("http");
-              return (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  title={s.label}
-                  className="footer-icon"
-                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                >
-                  <Icon size={18} aria-hidden="true" />
-                </a>
-              );
-            })}
-          </nav>
+        <div className="flex items-center justify-center gap-3 mb-5">
+          {socials.map((s) => {
+            const Icon = s.icon;
+            const external = s.href.startsWith("http");
+            return (
+              <a
+                key={s.label}
+                href={s.href}
+                aria-label={s.label}
+                title={s.label}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  color: "rgba(255,255,255,0.6)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.03)",
+                }}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <Icon size={17} />
+              </a>
+            );
+          })}
         </div>
+        &copy; {new Date().getFullYear()} Siam Hossain Nayon. Crafted with precision.
       </footer>
-    </>
+    </main>
   );
 }

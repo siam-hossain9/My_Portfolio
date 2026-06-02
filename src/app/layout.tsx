@@ -1,13 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
 
 const SITE_URL = "https://siamsportfolio.vercel.app";
 
@@ -30,14 +22,11 @@ export const metadata: Metadata = {
     "React",
     "PyTorch",
     "AIUB",
-    "Bangladesh Developer",
     "Portfolio",
   ],
   authors: [{ name: "Siam Hossain Nayon", url: SITE_URL }],
   creator: "Siam Hossain Nayon",
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -105,7 +94,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`dark ${jetbrainsMono.variable}`}>
+    <html lang="en" className="dark">
       <body>
         {children}
         <script

@@ -1,25 +1,24 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, GitBranch, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, GitBranch, Send } from "lucide-react";
 import { LinkedinIcon } from "@/components/BrandIcons";
 
 const contactItems = [
   {
-    icon: <Mail size={20} aria-hidden="true" />,
+    icon: <Mail size={20} />,
     label: "Email",
     value: "siamhossain1130@gmail.com",
     href: "mailto:siamhossain1130@gmail.com",
     accent: "#00C2FF",
   },
   {
-    icon: <MapPin size={20} aria-hidden="true" />,
+    icon: <MapPin size={20} />,
     label: "Location",
     value: "Dhaka, Bangladesh",
     accent: "#FF8A00",
   },
   {
-    icon: <GitBranch size={20} aria-hidden="true" />,
+    icon: <GitBranch size={20} />,
     label: "GitHub",
     value: "github.com/siam-hossain9",
     href: "https://github.com/siam-hossain9",
@@ -30,13 +29,14 @@ const contactItems = [
     label: "LinkedIn",
     value: "in/siam-hossain",
     href: "https://www.linkedin.com/in/siam-hossain-00788226b/",
-    accent: "#0A66C2",
+    accent: "#0077b5",
   },
 ];
 
+import { useState } from "react";
+
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,7 +44,6 @@ export default function Contact() {
     const subject = encodeURIComponent(`Portfolio Contact from ${name || "a visitor"}`);
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
     window.location.href = `mailto:siamhossain1130@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
   };
 
   return (
@@ -60,7 +59,7 @@ export default function Contact() {
           <h2 className="text-3xl md:text-[40px] font-bold mb-4" style={{ color: "#fff" }}>
             Let&apos;s Connect
           </h2>
-          <p className="text-sm md:text-base max-w-lg mx-auto" style={{ color: "rgba(255,255,255,0.65)" }}>
+          <p className="text-sm md:text-base max-w-lg mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
             Open for opportunities, collaborations, and interesting projects. Drop me a message!
           </p>
         </motion.div>
@@ -82,25 +81,18 @@ export default function Contact() {
                 >
                   <div
                     className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: `${c.accent}22`, color: c.accent }}
+                    style={{ background: `${c.accent}15`, color: c.accent }}
                   >
                     {c.icon}
                   </div>
                   <div>
-                    <p className="text-xs mb-1" style={{ color: "rgba(255,255,255,0.6)" }}>{c.label}</p>
-                    <p className="text-sm font-semibold break-all" style={{ color: "#fff" }}>{c.value}</p>
+                    <p className="text-xs mb-1" style={{ color: "rgba(255,255,255,0.4)" }}>{c.label}</p>
+                    <p className="text-sm font-semibold" style={{ color: "#fff" }}>{c.value}</p>
                   </div>
                 </div>
               );
               return c.href ? (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  aria-label={`${c.label}: ${c.value}`}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  className="block"
-                >
+                <a key={c.label} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
                   {inner}
                 </a>
               ) : (
@@ -118,79 +110,104 @@ export default function Contact() {
             className="glass"
             style={{ padding: "32px" }}
           >
-            <form className="space-y-5" onSubmit={handleSubmit} noValidate>
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="contact-name" className="block text-xs font-medium mb-2" style={{ color: "rgba(255,255,255,0.65)" }}>
+                <label className="block text-xs font-medium mb-2" style={{ color: "rgba(255,255,255,0.5)" }}>
                   Name
                 </label>
                 <input
-                  id="contact-name"
-                  name="name"
                   type="text"
-                  autoComplete="name"
-                  placeholder="Jane Doe"
+                  placeholder="John Doe"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
-                  className="field"
+                  className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all duration-200"
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    color: "#fff",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(0,194,255,0.4)";
+                    e.currentTarget.style.boxShadow = "0 0 0 2px rgba(0,194,255,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 />
               </div>
               <div>
-                <label htmlFor="contact-email" className="block text-xs font-medium mb-2" style={{ color: "rgba(255,255,255,0.65)" }}>
+                <label className="block text-xs font-medium mb-2" style={{ color: "rgba(255,255,255,0.5)" }}>
                   Email
                 </label>
                 <input
-                  id="contact-email"
-                  name="email"
                   type="email"
-                  autoComplete="email"
-                  placeholder="jane@example.com"
+                  placeholder="john@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
-                  className="field"
+                  className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all duration-200"
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    color: "#fff",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(0,194,255,0.4)";
+                    e.currentTarget.style.boxShadow = "0 0 0 2px rgba(0,194,255,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 />
               </div>
               <div>
-                <label htmlFor="contact-message" className="block text-xs font-medium mb-2" style={{ color: "rgba(255,255,255,0.65)" }}>
+                <label className="block text-xs font-medium mb-2" style={{ color: "rgba(255,255,255,0.5)" }}>
                   Message
                 </label>
                 <textarea
-                  id="contact-message"
-                  name="message"
                   rows={4}
-                  placeholder="Hello Siam, I'd like to discuss…"
+                  placeholder="Hello Siam, I'd like to discuss..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
-                  className="field resize-none"
+                  className="w-full px-4 py-3 rounded-lg text-sm outline-none resize-none transition-all duration-200"
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    color: "#fff",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(0,194,255,0.4)";
+                    e.currentTarget.style.boxShadow = "0 0 0 2px rgba(0,194,255,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 />
               </div>
-              <button type="submit" className="btn-primary w-full" style={{ borderRadius: 8 }}>
-                <Send size={15} aria-hidden="true" />
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all duration-300"
+                style={{
+                  background: "#00C2FF",
+                  color: "#000",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#33d1ff";
+                  e.currentTarget.style.boxShadow = "0 0 24px rgba(0,194,255,0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "#00C2FF";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <Send size={15} />
                 Send Message
               </button>
-
-              {/* Accessible status feedback */}
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-xs flex items-center gap-2 min-h-[1.25rem]"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-              >
-                {sent ? (
-                  <>
-                    <CheckCircle2 size={14} style={{ color: "#50E3C2" }} aria-hidden="true" />
-                    Your email client should now be open. If it didn&apos;t open, email me directly at{" "}
-                    <a href="mailto:siamhossain1130@gmail.com" className="underline" style={{ color: "#00C2FF" }}>
-                      siamhossain1130@gmail.com
-                    </a>
-                    .
-                  </>
-                ) : (
-                  ""
-                )}
-              </p>
             </form>
           </motion.div>
         </div>

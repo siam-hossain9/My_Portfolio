@@ -72,19 +72,17 @@ export const IconContainer = ({
   r: number;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
-  const active = isHovered || isFocused;
 
-  // High-performance collision detection without re-renders (±12° sweep window)
-  const isActiveOpacity = useTransform(radarAngle, [iconAngle - 12, iconAngle, iconAngle + 12], [0, 1, 0]);
+  // High-performance collision detection without re-renders
+  const isActiveOpacity = useTransform(radarAngle, [iconAngle - 15, iconAngle, iconAngle + 15], [0, 1, 0]);
   const boxShadow = useTransform(
-    radarAngle,
-    [iconAngle - 12, iconAngle, iconAngle + 12],
+    radarAngle, 
+    [iconAngle - 15, iconAngle, iconAngle + 15], 
     ["0px 0px 0px rgba(0,194,255,0)", "0px 0px 25px rgba(0,194,255,0.7)", "0px 0px 0px rgba(0,194,255,0)"]
   );
   const borderColor = useTransform(
-    radarAngle,
-    [iconAngle - 12, iconAngle, iconAngle + 12],
+    radarAngle, 
+    [iconAngle - 15, iconAngle, iconAngle + 15], 
     ["rgba(255,255,255,0.1)", "rgba(0,194,255,1)", "rgba(255,255,255,0.1)"]
   );
   
@@ -117,32 +115,27 @@ export const IconContainer = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <motion.a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${text}${desc ? ` — ${desc}` : ""} (opens GitHub in a new tab)`}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+      <motion.a 
+        href={link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
         className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-[#050505] transition-colors pointer-events-auto"
         style={{
-          boxShadow: active ? "0px 0px 15px rgba(0,194,255,0.4)" : boxShadow,
-          borderColor: active ? "rgba(0,194,255,0.6)" : borderColor,
+          boxShadow: isHovered ? "0px 0px 15px rgba(0,194,255,0.4)" : boxShadow,
+          borderColor: isHovered ? "rgba(0,194,255,0.6)" : borderColor,
           borderWidth: 1,
-          borderStyle: "solid",
+          borderStyle: "solid"
         }}
       >
         {icon}
-        <span className="sr-only">{text}</span>
       </motion.a>
-
+      
       {/* Tooltip */}
-      <motion.div
-        aria-hidden="true"
+      <motion.div 
         className="absolute top-16 w-56 bg-[#050505]/95 backdrop-blur-sm border border-white/10 rounded-xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.8)] pointer-events-none z-[100]"
-        style={{
-          opacity: active ? 1 : isActiveOpacity,
-          y: active ? 0 : activeYOffset,
+        style={{ 
+          opacity: isHovered ? 1 : isActiveOpacity,
+          y: isHovered ? 0 : activeYOffset
         }}
       >
         <div className="text-center text-sm font-bold text-white mb-2 leading-tight">
