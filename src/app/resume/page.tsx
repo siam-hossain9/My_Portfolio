@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Mail, MapPin, Globe } from "lucide-react";
+import { ArrowLeft, Mail, MapPin, Globe, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 import PrintButton from "@/components/PrintButton";
+
+const RESUME_PDF = "/Siam-Hossain-Nayon-Resume.pdf";
 
 export const metadata: Metadata = {
   title: "Résumé",
@@ -69,7 +71,18 @@ export default function ResumePage() {
           <Link href="/" className="nav-link inline-flex items-center gap-2">
             <ArrowLeft size={16} aria-hidden="true" /> Back to portfolio
           </Link>
-          <PrintButton />
+          <div className="flex items-center gap-3">
+            <a
+              href={RESUME_PDF}
+              download="Siam-Hossain-Nayon-Resume.pdf"
+              className="btn-primary"
+              style={{ borderRadius: 8 }}
+            >
+              <Download size={15} aria-hidden="true" />
+              Download PDF
+            </a>
+            <PrintButton />
+          </div>
         </div>
       </div>
 
