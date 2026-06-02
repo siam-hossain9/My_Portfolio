@@ -29,18 +29,25 @@ const icons = [
 
 export default function IconCloud() {
   const renderedIcons = icons.map((url) => (
-    <a key={url} href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'grab' }}>
+    <span key={url} style={{ cursor: "grab", display: "inline-block" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={url}
         height="64"
         width="64"
-        alt="tech icon"
+        alt=""
+        loading="lazy"
+        decoding="async"
       />
-    </a>
+    </span>
   ));
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ maxWidth: '600px', margin: '0 auto' }}>
+    <div
+      className="w-full h-full flex items-center justify-center"
+      style={{ maxWidth: "600px", margin: "0 auto" }}
+      aria-hidden="true"
+    >
       <Cloud
         options={{
           clickToFront: 500,

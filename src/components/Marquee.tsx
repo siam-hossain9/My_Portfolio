@@ -19,16 +19,26 @@ const techStack = [
 ];
 
 export default function Marquee() {
+  // Two copies is the exact amount the -50% translate loop needs for a seamless cycle.
+  const items = [
+    ...techStack.map((t) => ({ ...t, copy: "a" })),
+    ...techStack.map((t) => ({ ...t, copy: "b" })),
+  ];
+
   return (
-    <div className="marquee-container">
+    <div className="marquee-container" aria-hidden="true">
       <div className="marquee-content">
-        {/* We duplicate the items several times to ensure a smooth, continuous loop */}
-        {[...techStack, ...techStack, ...techStack, ...techStack].map((tech, idx) => (
-          <div key={idx} className="marquee-item">
-            <img 
-              src={tech.icon} 
-              alt={tech.name} 
-              style={{ width: "24px", height: "24px", objectFit: "contain", filter: "drop-shadow(0 0 8px rgba(0,0,0,0.5))" }} 
+        {items.map((tech) => (
+          <div key={`${tech.copy}-${tech.name}`} className="marquee-item">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={tech.icon}
+              alt=""
+              width={24}
+              height={24}
+              loading="lazy"
+              decoding="async"
+              style={{ width: "24px", height: "24px", objectFit: "contain", filter: "drop-shadow(0 0 8px rgba(0,0,0,0.5))" }}
             />
             {tech.name}
           </div>

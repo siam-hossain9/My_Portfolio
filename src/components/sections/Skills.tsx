@@ -20,7 +20,7 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
           className="section-label"
         >
-          <Code2 size={24} style={{ color: "#FF8A00" }} />
+          <Code2 size={24} style={{ color: "#FF8A00" }} aria-hidden="true" />
           <h2>Tech.Stack</h2>
         </motion.div>
 

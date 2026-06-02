@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-bg: #050505;
   --color-surface: rgba(255, 255, 255, 0.04);
-  --color-text: #a0a0a0;
+  --color-text: #b4b4b4;
   --color-text-bright: #ffffff;
   --color-cyan: #00C2FF;
   --color-orange: #FF8A00;
   --color-teal: #50E3C2;
   --color-cyan-glow: rgba(0, 194, 255, 0.15);
   --color-orange-glow: rgba(255, 138, 0, 0.10);
-  --font-mono: "JetBrains Mono", "Cascadia Code", ui-monospace, SFMono-Regular, monospace;
+  /* Loaded via next/font (--font-jetbrains); literal names are the fallback chain. */
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", "Cascadia Code", ui-monospace, SFMono-Regular, monospace;
 }
 
 /* ── Base ── */
@@ -30,6 +30,70 @@ body {
 ::selection {
   background: var(--color-cyan);
   color: #000;
+}
+
+/* ── Keyboard focus visibility (WCAG 2.4.7) ── */
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+/* Don't show the ring for pointer/touch interactions, only keyboard. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Accessible form fields (CSS focus, no JS) ── */
+.field {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+.field::placeholder { color: rgba(255, 255, 255, 0.35); }
+.field:focus-visible {
+  border-color: rgba(0, 194, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.12);
+  outline: none;
+}
+.field[aria-invalid="true"] {
+  border-color: rgba(255, 94, 94, 0.7);
+}
+
+/* ── Print: clean résumé output ── */
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .no-print { display: none !important; }
+  .resume-doc {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .resume-doc a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+}
+
+/* ── Respect reduced-motion: neutralize infinite/large motion (WCAG 2.3.3) ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ── Scrollbar ── */
@@ -211,10 +275,10 @@ body {
 .tech-chip {
   padding: 3px 10px;
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 4px;
   font-size: 11px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.72);
 }
 
 /* -- Dot Grid Background -- */
@@ -320,7 +384,7 @@ body {
   padding: 0 40px;
   font-size: 24px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.3s ease;
@@ -336,13 +400,84 @@ body {
   100% { stroke-dashoffset: -100; }
 }
 
-/* Glowing text utility */
+/* Gradient shift for animated headings (Hero name, About.me) */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glowing text utility — solid white base, gradient layered on top where supported */
 .text-glow-animated {
-  background: linear-gradient(135deg, #00C2FF, #50E3C2, #FF8A00, #00C2FF);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 6s ease infinite;
+  color: #fff;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .text-glow-animated {
+    background: linear-gradient(135deg, #00C2FF, #50E3C2, #FF8A00, #00C2FF);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s ease infinite;
+  }
+}
+/* Windows High Contrast / forced-colors: keep text readable */
+@media (forced-colors: active) {
+  .text-glow-animated {
+    -webkit-text-fill-color: CanvasText;
+    color: CanvasText;
+    background: none;
+  }
+}
+
+/* ── Nav links (CSS hover/focus, no inline JS) ── */
+.nav-link {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+  padding: 8px 0;
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #fff;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 0;
+  background: var(--color-cyan);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: 100%;
+}
+
+/* ── Footer social icon buttons ── */
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.25s ease;
+}
+.footer-icon:hover,
+.footer-icon:focus-visible {
+  color: var(--color-cyan);
+  border-color: rgba(0, 194, 255, 0.5);
+  background: rgba(0, 194, 255, 0.08);
+  transform: translateY(-2px);
 }
 
 /* Radar Ping Animation */
