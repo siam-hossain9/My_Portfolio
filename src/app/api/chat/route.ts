@@ -5,7 +5,10 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions";
-const MODEL = process.env.NVIDIA_MODEL || "meta/llama-3.3-70b-instruct";
+// llama-3.1-8b responds in <1s on NVIDIA's free tier; the 70b variants
+// frequently hang in the queue. Fast + reliable beats big for a Q&A bot.
+const MODEL = process.env.NVIDIA_MODEL || "meta/llama-3.1-8b-instruct";
+const UPSTREAM_TIMEOUT_MS = 30_000; // fail fast instead of hanging the function
 
 // Limits to keep the bot cheap, on-topic, and abuse-resistant.
 const MAX_TURNS = 12; // how many prior messages we forward
@@ -166,6 +169,7 @@ export async function POST(req: NextRequest) {
         Accept: "text/event-stream",
       },
       body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
     });
   } catch {
     return Response.json({ error: "Couldn't reach the AI service. Try again in a moment." }, { status: 502 });
