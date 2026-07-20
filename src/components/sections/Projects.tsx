@@ -56,48 +56,42 @@ const PROJECTS: Project[] = [
 
   // ── Automation (n8n) ──
   {
+    slug: "realestate-engine", cat: "auto", title: "Real-Estate Lead Engine", images: 4,
+    blurb: "Production lead-gen engine for a real-estate investor — ~25 qualified leads delivered daily.",
+    detail: "A live client system built as coordinated n8n workflows: scheduled Apify scrapes ingest and dedupe property listings into Postgres, a detail-scrape pass enriches each lead, then Gemini plus the RentCast valuation API compute a deal score and Maximum Allowable Offer — pushing the top leads into Close CRM with a Slack digest and per-lead alerts. Includes an on-demand webhook 'comping' endpoint for instant deal analysis.",
+    tech: ["n8n", "Postgres", "Apify", "Gemini", "RentCast", "Close CRM"],
+  },
+  {
     slug: "customer-support", cat: "auto", title: "Customer Support AI Agent", images: 1,
     blurb: "An n8n workflow that triages support tickets with AI and drafts replies from a knowledge base.",
     detail: "Ingests tickets from email, Zendesk, Intercom, and webhooks, classifies them with OpenAI, retrieves answers from a Pinecone knowledge base (RAG), then drafts and auto-resolves or escalates — and emails a weekly report. 31 fully-wired nodes.",
     tech: ["n8n", "OpenAI", "Pinecone"], github: "https://github.com/siam-hossain9/customer-support-ai-agent",
   },
   {
-    slug: "devops-incident", cat: "auto", title: "DevOps Incident Response", images: 0,
+    slug: "devops-incident", cat: "auto", title: "DevOps Incident Response", images: 1,
     blurb: "An AI 'SRE' that ingests alerts, diagnoses with GPT-4, pages the team, and auto-remediates.",
     detail: "A 35-node n8n workflow that receives alerts (Datadog/Grafana/cron), diagnoses incidents with GPT-4, routes via PagerDuty, and triggers automated remediation (AWS scaling, rollbacks) with Slack, Notion, and Gmail notifications.",
     tech: ["n8n", "GPT-4", "PagerDuty", "AWS"], github: "https://github.com/siam-hossain9/DevOps-Incident-Response-Automation",
   },
   {
-    slug: "social-media", cat: "auto", title: "Social Media Content Engine", images: 0,
+    slug: "social-media", cat: "auto", title: "Social Media Content Engine", images: 1,
     blurb: "Autonomous content pipeline: trends in, AI calendar and posts out, scheduled via Buffer.",
     detail: "An n8n engine that monitors trends, generates a weekly content calendar and platform-specific copy with GPT-4 and DALL·E, schedules posts to Twitter/LinkedIn/Instagram via Buffer, and runs a 7-day analytics feedback loop — also ported to the typed n8n TypeScript SDK.",
     tech: ["n8n", "GPT-4", "DALL·E", "Buffer"], github: "https://github.com/siam-hossain9/N8N-Automation-social-media",
   },
   {
-    slug: "cold-outreach", cat: "auto", title: "Cold-Outreach Automation", images: 0,
-    blurb: "A compliance-first lead-gen platform: scraper + Convex backend + TCPA/10DLC-gated SMS.",
-    detail: "An end-to-end cold-outreach system that scrapes businesses with no website, stores them in a Convex backend, and runs TCPA/10DLC-compliant SMS campaigns (with opt-out/DNC handling) through Close CRM — offering to build the prospect a site on interest. Ran in production with 800+ real messages sent.",
-    tech: ["Node.js", "Convex", "Close CRM", "Python"], github: "https://github.com/siam-hossain9/cold-outreach-automation",
+    slug: "cold-outreach", cat: "auto", title: "Cold-Outreach & Reply-Routing Engine", images: 5,
+    blurb: "Compliance-first outreach platform: throttled SMS first-touch, LLM reply routing, kill switch + health checks.",
+    detail: "A production cold-outreach system built as coordinated n8n workflows over a Convex backend and Close CRM: webhook lead ingest, a throttled weekday first-touch SMS batch, an LLM intent/sentiment classifier with a STOP/opt-out compliance guard that routes replies, and automated build-and-send for interested leads — plus an ops layer with a remote kill switch, hourly health checks, and CRM dedup sweeps. Ran live with 800+ real messages sent.",
+    tech: ["n8n", "Convex", "Close CRM", "LLM routing", "Slack"], github: "https://github.com/siam-hossain9/cold-outreach-automation",
   },
 
   // ── Web & Interactive ──
-  {
-    slug: "animated-website", cat: "web", title: "Animated Website", images: 4,
-    blurb: "An immersive scroll-driven experience with custom GLSL shaders, 3D, and audio storytelling.",
-    detail: "A React + Vite site with nine bespoke scroll sections — custom GLSL shader gradients, Three.js 3D, canvas particle systems (petals, embers), a cursor petal trail, and synced audio. ~1,900 lines of hand-written feature code.",
-    tech: ["React 19", "Three.js", "Vite", "GLSL"], github: "https://github.com/siam-hossain9/animated-website",
-  },
   {
     slug: "dororo", cat: "web", title: "Dororo", images: 4,
     blurb: "A Netflix-style discovery app for movies, TV, and anime across four public APIs.",
     detail: "A streaming-discovery web app aggregating TMDB, OMDB, TVMaze, and Jikan for browsing movies, shows, and anime — with a serverless proxy backend, rich detail pages, and a player UI. 23 commits of sustained build-out; live on Vercel.",
     tech: ["JavaScript", "Node proxy", "Vercel"], github: "https://github.com/siam-hossain9/dororo", live: "https://dororotsuki-pi.vercel.app",
-  },
-  {
-    slug: "git-progress-city", cat: "web", title: "Git Progress City", images: 0,
-    blurb: "A 3D city where each GitHub developer is a building sized by their commits and activity.",
-    detail: "An interactive Three.js visualization: query the GitHub GraphQL API and render each developer as a building whose height, width, window lighting, and color are driven by commits, repos, activity, and primary language. ~2,000 lines of TypeScript with a passing test suite.",
-    tech: ["TypeScript", "Three.js", "GitHub GraphQL", "Vite"],
   },
   {
     slug: "virtual-pet", cat: "web", title: "Virtual Pet — Petverse", images: 4,

@@ -53,8 +53,9 @@ FACTS ABOUT SIAM — this is your ONLY source of truth. Never invent employers, 
   - Tools / DevOps: Git, Docker, Vercel, Jupyter, Linux
 - Selected projects:
   - Siam AI Chatbot — full-stack AI assistant with a 3D animated background (Next.js, TypeScript), deployed on Vercel.
+  - Real-Estate Lead Engine — a production n8n lead-generation system for a real-estate investor client: daily Apify scrapes into Postgres, Gemini + RentCast deal scoring with Maximum Allowable Offer math, and ~25 qualified leads pushed to Close CRM every day.
+  - Cold-Outreach & Reply-Routing Engine — production n8n + Convex outreach platform with throttled SMS first-touch, LLM reply classification, compliance guards, and a kill-switch ops layer.
   - Customer Support AI Agent — a conversational AI agent that automates customer-support workflows end to end.
-  - Animated Website — an immersive scroll-driven experience with particle systems and custom GLSL shaders (React, Vite, Three.js).
   - DeskPilot — a desktop AI companion for Windows that chats, sees the screen, and controls the PC (Python, task-routed LLM brain).
   - Financia — a financial-management web app with a PHP + MySQL backend and full CRUD workflows.
   - Virtual Pet — a browser-based virtual-pet game with persistent interactive state (Next.js, TypeScript).

@@ -24,11 +24,26 @@ const MANIFEST = {
   "customer-support": [
     "E:/N8N/customer support ai agent/Screenshot 2026-04-27 195040.png",
   ],
-  "animated-website": [
-    "E:/agent/animated-website/docs/demo-visuals/01-demo.png",
-    "E:/agent/animated-website/docs/demo-visuals/02-demo.png",
-    "E:/agent/animated-website/docs/demo-visuals/03-demo.png",
-    "E:/agent/animated-website/docs/demo-visuals/07-demo.png",
+  // Anonymized production workflow canvases from the CV portfolio doc
+  // (E:/CV/job cv/Siam_Hossain_Nayon_n8n_Portfolio.html)
+  "realestate-engine": [
+    "E:/CV/job cv/screenshots/clean/re-03-score-push.png",
+    "E:/CV/job cv/screenshots/clean/re-01-listings-ingest.png",
+    "E:/CV/job cv/screenshots/clean/re-02-enrich.png",
+    "E:/CV/job cv/screenshots/clean/re-04-comping.png",
+  ],
+  "cold-outreach": [
+    "E:/CV/job cv/screenshots/clean/uw-03-reply-classifier.png",
+    "E:/CV/job cv/screenshots/clean/uw-01-ingest.png",
+    "E:/CV/job cv/screenshots/clean/uw-02-opener.png",
+    "E:/CV/job cv/screenshots/clean/uw-04-build-demo.png",
+    "E:/CV/job cv/screenshots/clean/uw-05-ops.png",
+  ],
+  "devops-incident": [
+    "E:/CV/job cv/screenshots/DevOps-Incident-Response-Automation.png",
+  ],
+  "social-media": [
+    "E:/CV/job cv/screenshots/N8N-Automation-social-media.png",
   ],
   dororo: [
     { src: "E:/agent/clockwatch/screenshots/Screenshot 2026-04-17 023151.png", ...DORORO_CROP },
