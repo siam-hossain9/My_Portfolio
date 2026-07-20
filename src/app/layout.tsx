@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import ChatWidget from "@/components/ChatWidget";
+import MotionProvider from "@/components/MotionProvider";
 
 const SITE_URL = "https://siamsportfolio.vercel.app";
 
@@ -96,7 +98,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body>
-        {children}
+        <MotionProvider>
+          {children}
+          <ChatWidget />
+        </MotionProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
