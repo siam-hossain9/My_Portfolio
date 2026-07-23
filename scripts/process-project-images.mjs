@@ -70,18 +70,6 @@ const MANIFEST = {
     "E:/project/Snake Game/menu.png",
   ],
   wallop: ["E:/agent/imagination/wallop/docs/demo.gif"],
-  galaxy: [
-    "E:/11th semester/PAPER MODEL/Galaxy detection/images/grad_cam.png",
-    "E:/11th semester/PAPER MODEL/Galaxy detection/images/tsne_embeddings.png",
-    "E:/11th semester/PAPER MODEL/Galaxy detection/images/topk_anomalies.png",
-    "E:/11th semester/PAPER MODEL/Galaxy detection/images/confusion_matrix.png",
-  ],
-  "few-shot": [
-    "E:/11th semester/11th semester/fewshot_finegrained/figures/fig1_main_results.png",
-    "E:/11th semester/11th semester/fewshot_finegrained/figures/fig4_heatmap.png",
-    "E:/11th semester/11th semester/fewshot_finegrained/figures/fig3_classifier_comparison.png",
-    "E:/11th semester/11th semester/fewshot_finegrained/figures/fig2_backbone_comparison.png",
-  ],
 };
 
 const kb = (p) => Math.round(statSync(p).size / 1024);

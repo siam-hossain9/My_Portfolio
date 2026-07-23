@@ -24,7 +24,6 @@ const CATS: { id: string; name: string; tag: string; accent: string; icon: React
   { id: "web", name: "Web & Interactive", tag: "sites · apps · 3D", accent: "#50E3C2", icon: <SparkIcon /> },
   { id: "mobile", name: "Mobile & Games", tag: "flutter · android · godot", accent: "#FF8A00", icon: <GamepadIcon /> },
   { id: "systems", name: "Systems & Hardware", tag: "c++ · cli · iot", accent: "#FF5E5E", icon: <ChipIcon /> },
-  { id: "research", name: "Research", tag: "computer vision · deep learning", accent: "#C08CFF", icon: <FlaskIcon /> },
 ];
 
 const PROJECTS: Project[] = [
@@ -152,19 +151,6 @@ const PROJECTS: Project[] = [
     tech: ["Arduino UNO", "C++", "OLED"], github: "https://github.com/siam-hossain9/Reaction-Time-Game_IOT_Project",
   },
 
-  // ── Research ──
-  {
-    slug: "galaxy", cat: "research", title: "Galaxy Morphology Classification", images: 4,
-    blurb: "ResNet50 galaxy classifier with open-set detection — 92.96% accuracy, far-OOD AUROC ~1.000.",
-    detail: "Galaxy morphology classification plus open-set rare-galaxy detection. A ResNet50 with two-stage fine-tuning and focal loss reaches 92.96% test accuracy on Galaxy Zoo; VAE and Mahalanobis detectors on the learned embedding flag novel galaxies (far-OOD AUROC ~1.000), with Grad-CAM explainability.",
-    tech: ["PyTorch", "ResNet50", "VAE", "Grad-CAM"], github: "https://github.com/siam-hossain9/galaxy-morphology-classification",
-  },
-  {
-    slug: "few-shot", cat: "research", title: "Few-Shot Fine-Grained Classification", images: 4,
-    blurb: "Foundation vision models as feature extractors beat meta-learning — 98.85% on CUB-200.",
-    detail: "A study showing pretrained foundation models (DINOv2, CLIP, ViT) as frozen feature extractors with simple classifiers outperform specialized few-shot meta-learning: 98.85% on CUB-200-2011 and 99.97% on Oxford Flowers-102, across 1/5/10/20-shot settings and three backbones.",
-    tech: ["PyTorch", "DINOv2", "CLIP", "ViT"], github: "https://github.com/siam-hossain9/few-shot-fine-grained-baselines",
-  },
 ];
 
 const accentOf = (cat: string) => CATS.find((c) => c.id === cat)?.accent ?? "#00C2FF";
@@ -194,7 +180,7 @@ export default function Projects() {
           <h2>Featured.Projects</h2>
         </motion.div>
         <p className="text-center text-white/60 text-sm mb-10 max-w-xl mx-auto">
-          A selection of what I&apos;ve built across AI, automation, the web, mobile, systems, and research. Tap any card for details.
+          A selection of what I&apos;ve built across AI, automation, the web, mobile, and systems. Tap any card for details.
         </p>
 
         {/* Filter tabs */}
@@ -525,7 +511,6 @@ function FlowIcon() { return svg(<><rect x="3" y="3" width="6" height="6" rx="1"
 function SparkIcon() { return svg(<path d="M12 3l1.9 5.8L20 10.7l-5.1 3.4L16.5 20 12 16.4 7.5 20l1.6-5.9L4 10.7l6.1-1.9L12 3z" />); }
 function GamepadIcon() { return svg(<><line x1="6" y1="12" x2="10" y2="12" /><line x1="8" y1="10" x2="8" y2="14" /><line x1="15" y1="11" x2="15.01" y2="11" /><line x1="18" y1="13" x2="18.01" y2="13" /><rect x="2" y="6" width="20" height="12" rx="4" /></>); }
 function ChipIcon() { return svg(<><rect x="7" y="7" width="10" height="10" rx="1" /><path d="M9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2" /></>); }
-function FlaskIcon() { return svg(<><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3" /><path d="M7 14h10" /></>); }
 function FolderIcon() { return <span style={{ color: "#00C2FF" }}>{svg(<><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M9 13l2 2 4-4" /></>, 22)}</span>; }
 function ArrowUpRightIcon() { return svg(<><path d="M7 17 17 7" /><path d="M7 7h10v10" /></>, 15); }
 function ChevronIcon() { return svg(<path d="M9 18l6-6-6-6" />, 14); }
