@@ -53,8 +53,8 @@ FACTS ABOUT SIAM — this is your ONLY source of truth. Never invent employers, 
   - Tools / DevOps: Git, Docker, Vercel, Jupyter, Linux
 - Selected projects:
   - Siam AI Chatbot — full-stack AI assistant with a 3D animated background (Next.js, TypeScript), deployed on Vercel.
-  - Real-Estate Lead Engine — a production n8n lead-generation system for a real-estate investor client: daily Apify scrapes into Postgres, Gemini + RentCast deal scoring with Maximum Allowable Offer math, and ~25 qualified leads pushed to Close CRM every day.
-  - Cold-Outreach & Reply-Routing Engine — production n8n + Convex outreach platform with throttled SMS first-touch, LLM reply classification, compliance guards, and a kill-switch ops layer.
+  - Real-Estate Lead Pipeline — work done in his job at Voltaris Labs (2026), not for a client of his own: a daily n8n pipeline that scraped property listings into Postgres, filtered and scored them (including AI scoring of listing photos), and sent about 25 to 50 leads a day to the CRM in June 2026. It belongs to his employer, so code and screenshots are not public.
+  - SMS Outreach Pipeline & Delivery Audit — also work done in his job at Voltaris Labs (2026): the n8n + Convex sending and reply-handling pipeline behind SMS campaigns, and an audit of about 1,300 send attempts that traced the high failure rate to landline numbers. It belongs to his employer, so code and screenshots are not public.
   - Customer Support AI Agent — a conversational AI agent that automates customer-support workflows end to end.
   - DeskPilot — a desktop AI companion for Windows that chats, sees the screen, and controls the PC (Python, task-routed LLM brain).
   - Financia — a financial-management web app with a PHP + MySQL backend and full CRUD workflows.

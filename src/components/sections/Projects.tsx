@@ -55,10 +55,10 @@ const PROJECTS: Project[] = [
 
   // ── Automation (n8n) ──
   {
-    slug: "realestate-engine", cat: "auto", title: "Real-Estate Lead Engine", images: 4,
-    blurb: "Production lead-gen engine for a real-estate investor — ~25 qualified leads delivered daily.",
-    detail: "A live client system built as coordinated n8n workflows: scheduled Apify scrapes ingest and dedupe property listings into Postgres, a detail-scrape pass enriches each lead, then Gemini plus the RentCast valuation API compute a deal score and Maximum Allowable Offer — pushing the top leads into Close CRM with a Slack digest and per-lead alerts. Includes an on-demand webhook 'comping' endpoint for instant deal analysis.",
-    tech: ["n8n", "Postgres", "Apify", "Gemini", "RentCast", "Close CRM"],
+    slug: "realestate-engine", cat: "auto", title: "Real-Estate Lead Pipeline", images: 0,
+    blurb: "Built at my job at Voltaris Labs: a daily pipeline that found and scored property listings and sent about 25–50 leads a day to the sales CRM.",
+    detail: "Work I did in my role at Voltaris Labs in 2026. I built and ran a daily pipeline of n8n workflows: scheduled scrapes collect property listings into Postgres, duplicates and poor matches are filtered out, an AI vision step scores the listing photos, and the best leads go into the CRM with a Slack summary. In June 2026 it delivered about 25 to 50 leads a day. The system belongs to my employer, so the code and screenshots are not shown here.",
+    tech: ["n8n", "Postgres", "Apify", "Gemini", "Close CRM"],
   },
   {
     slug: "customer-support", cat: "auto", title: "Customer Support AI Agent", images: 1,
@@ -79,10 +79,10 @@ const PROJECTS: Project[] = [
     tech: ["n8n", "GPT-4", "DALL·E", "Buffer"], github: "https://github.com/siam-hossain9/N8N-Automation-social-media",
   },
   {
-    slug: "cold-outreach", cat: "auto", title: "Cold-Outreach & Reply-Routing Engine", images: 5,
-    blurb: "Compliance-first outreach platform: throttled SMS first-touch, LLM reply routing, kill switch + health checks.",
-    detail: "A production cold-outreach system built as coordinated n8n workflows over a Convex backend and Close CRM: webhook lead ingest, a throttled weekday first-touch SMS batch, an LLM intent/sentiment classifier with a STOP/opt-out compliance guard that routes replies, and automated build-and-send for interested leads — plus an ops layer with a remote kill switch, hourly health checks, and CRM dedup sweeps. Ran live with 800+ real messages sent.",
-    tech: ["n8n", "Convex", "Close CRM", "LLM routing", "Slack"], github: "https://github.com/siam-hossain9/cold-outreach-automation",
+    slug: "cold-outreach", cat: "auto", title: "SMS Outreach Pipeline & Delivery Audit", images: 0,
+    blurb: "Built at my job at Voltaris Labs: the sending and reply-handling pipeline behind SMS campaigns, plus an audit that traced failed sends to landline numbers.",
+    detail: "Work I did in my role at Voltaris Labs in 2026. I built the pipeline behind the company's SMS campaigns on n8n, Convex and the CRM: lead import with duplicate checks, a throttled weekday sending batch, and rule-based sorting of replies, including STOP requests. I then audited about 1,300 send attempts and traced the high failure rate to landline numbers. The system belongs to my employer, so the code and screenshots are not shown here.",
+    tech: ["n8n", "Convex", "Close CRM", "Slack"],
   },
 
   // ── Web & Interactive ──

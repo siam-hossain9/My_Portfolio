@@ -24,21 +24,8 @@ const MANIFEST = {
   "customer-support": [
     "E:/N8N/customer support ai agent/Screenshot 2026-04-27 195040.png",
   ],
-  // Anonymized production workflow canvases from the CV portfolio doc
-  // (E:/CV/job cv/Siam_Hossain_Nayon_n8n_Portfolio.html)
-  "realestate-engine": [
-    "E:/CV/job cv/screenshots/clean/re-03-score-push.png",
-    "E:/CV/job cv/screenshots/clean/re-01-listings-ingest.png",
-    "E:/CV/job cv/screenshots/clean/re-02-enrich.png",
-    "E:/CV/job cv/screenshots/clean/re-04-comping.png",
-  ],
-  "cold-outreach": [
-    "E:/CV/job cv/screenshots/clean/uw-03-reply-classifier.png",
-    "E:/CV/job cv/screenshots/clean/uw-01-ingest.png",
-    "E:/CV/job cv/screenshots/clean/uw-02-opener.png",
-    "E:/CV/job cv/screenshots/clean/uw-04-build-demo.png",
-    "E:/CV/job cv/screenshots/clean/uw-05-ops.png",
-  ],
+  // realestate-engine and cold-outreach are employer-owned work (Voltaris Labs):
+  // their workflow canvases are deliberately not published.
   "devops-incident": [
     "E:/CV/job cv/screenshots/DevOps-Incident-Response-Automation.png",
   ],
